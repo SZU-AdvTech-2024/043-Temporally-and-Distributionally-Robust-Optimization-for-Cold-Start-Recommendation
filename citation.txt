@@ -1,0 +1,9 @@
+@inproceedings{REPO043,
+    author = "Lin, Xinyu and Wang, Wenjie and Zhao, Jujia and Li, Yongqi and Feng, Fuli and Chua, Tat-Seng",
+    booktitle = "Proceedings of the AAAI Conference on Artificial Intelligence",
+    number = "8",
+    pages = "8750--8758",
+    title = "{Temporally and distributionally robust optimization for cold-start recommendation}",
+    volume = "38",
+    year = "2024"
+}
