@@ -1,0 +1,350 @@
+Namespace(seed=1, no_cuda=False, data_path='amazon', model_name='TDRO', log_name='log', batch_size=1000, num_epoch=200, num_workers=1, topK='[10, 20, 50, 100]', step=2000, l_r=0.001, dim_E=128, reg_weight=0.001, num_neg=256, contrastive=0.1, num_sample=0.5, temp_value=0.1, pretrained_emb='./pretrained_emb/', num_group=5, mu=0.2, eta=0.2, num_period=5, split_mode='global', lam=0.3, p=0.2, group_test=False, portion_list=None, gpu='0', save_path='./models/', inference=False, ckpt=None)
+Data loading ...
+running k-means on cuda:0..
+[running kmeans]: 0it [00:00, ?it/s][running kmeans]: 0it [00:00, ?it/s, center_shift=51.014324, iteration=1, tol=0.000100][running kmeans]: 1it [00:00,  6.49it/s, center_shift=51.014324, iteration=1, tol=0.000100][running kmeans]: 1it [00:00,  6.49it/s, center_shift=0.901712, iteration=2, tol=0.000100] [running kmeans]: 2it [00:00,  6.68it/s, center_shift=0.901712, iteration=2, tol=0.000100][running kmeans]: 2it [00:00,  6.68it/s, center_shift=0.348838, iteration=3, tol=0.000100][running kmeans]: 3it [00:00,  6.73it/s, center_shift=0.348838, iteration=3, tol=0.000100][running kmeans]: 3it [00:00,  6.73it/s, center_shift=0.171986, iteration=4, tol=0.000100][running kmeans]: 4it [00:00,  6.74it/s, center_shift=0.171986, iteration=4, tol=0.000100][running kmeans]: 4it [00:00,  6.74it/s, center_shift=0.113762, iteration=5, tol=0.000100][running kmeans]: 5it [00:00,  6.75it/s, center_shift=0.113762, iteration=5, tol=0.000100][running kmeans]: 5it [00:00,  6.75it/s, center_shift=0.088069, iteration=6, tol=0.000100][running kmeans]: 6it [00:00,  6.76it/s, center_shift=0.088069, iteration=6, tol=0.000100][running kmeans]: 6it [00:01,  6.76it/s, center_shift=0.064380, iteration=7, tol=0.000100][running kmeans]: 7it [00:01,  6.76it/s, center_shift=0.064380, iteration=7, tol=0.000100][running kmeans]: 7it [00:01,  6.76it/s, center_shift=0.055621, iteration=8, tol=0.000100][running kmeans]: 8it [00:01,  6.77it/s, center_shift=0.055621, iteration=8, tol=0.000100][running kmeans]: 8it [00:01,  6.77it/s, center_shift=0.052136, iteration=9, tol=0.000100][running kmeans]: 9it [00:01,  6.76it/s, center_shift=0.052136, iteration=9, tol=0.000100][running kmeans]: 9it [00:01,  6.76it/s, center_shift=0.032142, iteration=10, tol=0.000100][running kmeans]: 10it [00:01,  6.77it/s, center_shift=0.032142, iteration=10, tol=0.000100][running kmeans]: 10it [00:01,  6.77it/s, center_shift=0.013448, iteration=11, tol=0.000100][running kmeans]: 11it [00:01,  6.77it/s, center_shift=0.013448, iteration=11, tol=0.000100][running kmeans]: 11it [00:01,  6.77it/s, center_shift=0.006735, iteration=12, tol=0.000100][running kmeans]: 12it [00:01,  6.77it/s, center_shift=0.006735, iteration=12, tol=0.000100][running kmeans]: 12it [00:01,  6.77it/s, center_shift=0.004198, iteration=13, tol=0.000100][running kmeans]: 13it [00:01,  6.77it/s, center_shift=0.004198, iteration=13, tol=0.000100][running kmeans]: 13it [00:02,  6.77it/s, center_shift=0.002742, iteration=14, tol=0.000100][running kmeans]: 14it [00:02,  6.66it/s, center_shift=0.002742, iteration=14, tol=0.000100][running kmeans]: 14it [00:02,  6.66it/s, center_shift=0.002289, iteration=15, tol=0.000100][running kmeans]: 15it [00:02,  6.67it/s, center_shift=0.002289, iteration=15, tol=0.000100][running kmeans]: 15it [00:02,  6.67it/s, center_shift=0.001515, iteration=16, tol=0.000100][running kmeans]: 16it [00:02,  6.69it/s, center_shift=0.001515, iteration=16, tol=0.000100][running kmeans]: 16it [00:02,  6.69it/s, center_shift=0.001004, iteration=17, tol=0.000100][running kmeans]: 17it [00:02,  6.72it/s, center_shift=0.001004, iteration=17, tol=0.000100][running kmeans]: 17it [00:02,  6.72it/s, center_shift=0.000953, iteration=18, tol=0.000100][running kmeans]: 18it [00:02,  6.73it/s, center_shift=0.000953, iteration=18, tol=0.000100][running kmeans]: 18it [00:02,  6.73it/s, center_shift=0.000724, iteration=19, tol=0.000100][running kmeans]: 19it [00:02,  6.75it/s, center_shift=0.000724, iteration=19, tol=0.000100][running kmeans]: 19it [00:02,  6.75it/s, center_shift=0.000544, iteration=20, tol=0.000100][running kmeans]: 20it [00:02,  6.75it/s, center_shift=0.000544, iteration=20, tol=0.000100][running kmeans]: 20it [00:03,  6.75it/s, center_shift=0.000447, iteration=21, tol=0.000100][running kmeans]: 21it [00:03,  6.76it/s, center_shift=0.000447, iteration=21, tol=0.000100][running kmeans]: 21it [00:03,  6.76it/s, center_shift=0.000376, iteration=22, tol=0.000100][running kmeans]: 22it [00:03,  6.76it/s, center_shift=0.000376, iteration=22, tol=0.000100][running kmeans]: 22it [00:03,  6.76it/s, center_shift=0.000289, iteration=23, tol=0.000100][running kmeans]: 23it [00:03,  6.77it/s, center_shift=0.000289, iteration=23, tol=0.000100][running kmeans]: 23it [00:03,  6.77it/s, center_shift=0.000368, iteration=24, tol=0.000100][running kmeans]: 24it [00:03,  6.76it/s, center_shift=0.000368, iteration=24, tol=0.000100][running kmeans]: 24it [00:03,  6.76it/s, center_shift=0.000278, iteration=25, tol=0.000100][running kmeans]: 25it [00:03,  6.75it/s, center_shift=0.000278, iteration=25, tol=0.000100][running kmeans]: 25it [00:03,  6.75it/s, center_shift=0.000212, iteration=26, tol=0.000100][running kmeans]: 26it [00:03,  6.75it/s, center_shift=0.000212, iteration=26, tol=0.000100][running kmeans]: 26it [00:04,  6.75it/s, center_shift=0.000153, iteration=27, tol=0.000100][running kmeans]: 27it [00:04,  6.75it/s, center_shift=0.000153, iteration=27, tol=0.000100][running kmeans]: 27it [00:04,  6.75it/s, center_shift=0.000161, iteration=28, tol=0.000100][running kmeans]: 28it [00:04,  6.76it/s, center_shift=0.000161, iteration=28, tol=0.000100][running kmeans]: 28it [00:04,  6.76it/s, center_shift=0.000126, iteration=29, tol=0.000100][running kmeans]: 29it [00:04,  6.76it/s, center_shift=0.000126, iteration=29, tol=0.000100][running kmeans]: 29it [00:04,  6.76it/s, center_shift=0.000097, iteration=30, tol=0.000100][running kmeans]: 30it [00:04,  6.66it/s, center_shift=0.000097, iteration=30, tol=0.000100][running kmeans]: 30it [00:04,  6.73it/s, center_shift=0.000097, iteration=30, tol=0.000100]
+interaction num of Environment 0: 39688
+interaction num of Environment 1: 29818
+interaction num of Environment 2: 23611
+interaction num of Environment 3: 20653
+interaction num of Environment 4: 17109
+interaction num of Group 0: 12634
+interaction num of Group 1: 18481
+interaction num of Group 2: 40521
+interaction num of Group 3: 43392
+interaction num of Group 4: 15851
+Data has been loaded.
+Train: The time elapse of epoch 000 is: 00: 05: 14
+------------------------------------------------------
+Runing Epoch 000  costs 00: 06: 24
+[Valid]: Precision: 0.0005-0.0005-0.0004-0.0004 Recall: 0.0019-0.0037-0.0091-0.0158 NDCG: 0.0013-0.0019-0.0032-0.0046 MRR: 0.0017-0.002-0.0023-0.0025
+[Test]: Precision: 0.0006-0.0005-0.0005-0.0004 Recall: 0.0025-0.0036-0.009-0.0151 NDCG: 0.0018-0.0021-0.0034-0.0047 MRR: 0.0027-0.0029-0.0032-0.0034
+[Test]: Precision: 0.0005-0.0005-0.0004-0.0003 Recall: 0.0033-0.0071-0.0121-0.0178 NDCG: 0.0016-0.0026-0.0037-0.0048 MRR: 0.0016-0.0019-0.0022-0.0023
+[Test]: Precision: 0.0009-0.0007-0.0006-0.0005 Recall: 0.0045-0.0065-0.0159-0.0267 NDCG: 0.0029-0.0035-0.0057-0.0077 MRR: 0.0035-0.0038-0.0043-0.0045
+------------------------------------------------------
+Train: The time elapse of epoch 001 is: 00: 05: 12
+------------------------------------------------------
+Runing Epoch 001  costs 00: 06: 21
+[Valid]: Precision: 0.0009-0.0007-0.0006-0.0005 Recall: 0.0033-0.0057-0.012-0.021 NDCG: 0.0023-0.003-0.0046-0.0065 MRR: 0.0031-0.0034-0.0039-0.0041
+[Test]: Precision: 0.0009-0.0008-0.0006-0.0005 Recall: 0.0034-0.0057-0.0128-0.0214 NDCG: 0.002-0.0028-0.0045-0.0062 MRR: 0.0025-0.0029-0.0033-0.0035
+[Test]: Precision: 0.0014-0.0011-0.0009-0.0007 Recall: 0.0086-0.0126-0.0248-0.0373 NDCG: 0.0048-0.006-0.0087-0.011 MRR: 0.0047-0.0052-0.0058-0.0061
+[Test]: Precision: 0.0012-0.001-0.0008-0.0007 Recall: 0.0058-0.0099-0.0224-0.0366 NDCG: 0.0032-0.0044-0.0072-0.0099 MRR: 0.0034-0.0039-0.0044-0.0047
+------------------------------------------------------
+Train: The time elapse of epoch 002 is: 00: 05: 15
+------------------------------------------------------
+Runing Epoch 002  costs 00: 06: 24
+[Valid]: Precision: 0.001-0.0009-0.0008-0.0006 Recall: 0.0039-0.0075-0.0161-0.0258 NDCG: 0.0026-0.0037-0.0057-0.0077 MRR: 0.0037-0.0042-0.0047-0.005
+[Test]: Precision: 0.0011-0.0009-0.0007-0.0006 Recall: 0.0046-0.0075-0.015-0.0235 NDCG: 0.0028-0.0037-0.0056-0.0072 MRR: 0.0035-0.004-0.0044-0.0047
+[Test]: Precision: 0.0018-0.0016-0.0012-0.0009 Recall: 0.0103-0.0185-0.0339-0.0523 NDCG: 0.0056-0.0079-0.0114-0.0147 MRR: 0.0055-0.0064-0.0072-0.0075
+[Test]: Precision: 0.0014-0.0012-0.001-0.0007 Recall: 0.0076-0.0127-0.0247-0.0383 NDCG: 0.0044-0.0059-0.0087-0.0112 MRR: 0.0046-0.0052-0.0058-0.0061
+------------------------------------------------------
+Train: The time elapse of epoch 003 is: 00: 05: 12
+------------------------------------------------------
+Runing Epoch 003  costs 00: 06: 21
+[Valid]: Precision: 0.0016-0.0013-0.001-0.0008 Recall: 0.0064-0.0105-0.0198-0.0308 NDCG: 0.0041-0.0053-0.0076-0.0098 MRR: 0.0055-0.0062-0.0068-0.0071
+[Test]: Precision: 0.0013-0.001-0.0008-0.0007 Recall: 0.0047-0.0087-0.0166-0.0284 NDCG: 0.0032-0.0043-0.0063-0.0087 MRR: 0.0041-0.0046-0.0052-0.0055
+[Test]: Precision: 0.0021-0.0018-0.0013-0.0011 Recall: 0.0123-0.0195-0.0375-0.0619 NDCG: 0.0065-0.0086-0.0126-0.0171 MRR: 0.0064-0.0072-0.0081-0.0086
+[Test]: Precision: 0.0017-0.0013-0.001-0.0008 Recall: 0.0085-0.014-0.0268-0.0427 NDCG: 0.005-0.0066-0.0095-0.0126 MRR: 0.0054-0.006-0.0067-0.007
+------------------------------------------------------
+Train: The time elapse of epoch 004 is: 00: 05: 14
+------------------------------------------------------
+Runing Epoch 004  costs 00: 06: 24
+[Valid]: Precision: 0.0021-0.0016-0.0011-0.001 Recall: 0.0087-0.0142-0.0238-0.0397 NDCG: 0.006-0.0076-0.0099-0.0131 MRR: 0.0076-0.0084-0.009-0.0094
+[Test]: Precision: 0.0016-0.0013-0.0009-0.0008 Recall: 0.0071-0.0114-0.0203-0.0323 NDCG: 0.0042-0.0055-0.0077-0.0101 MRR: 0.005-0.0056-0.0061-0.0064
+[Test]: Precision: 0.0023-0.0021-0.0014-0.0011 Recall: 0.0134-0.0235-0.0412-0.064 NDCG: 0.0075-0.0103-0.0144-0.0185 MRR: 0.0074-0.0085-0.0094-0.0099
+[Test]: Precision: 0.0018-0.0014-0.001-0.0008 Recall: 0.0093-0.0157-0.027-0.0425 NDCG: 0.0052-0.007-0.0096-0.0126 MRR: 0.0054-0.0061-0.0067-0.0071
+------------------------------------------------------
+Train: The time elapse of epoch 005 is: 00: 05: 12
+------------------------------------------------------
+Runing Epoch 005  costs 00: 06: 22
+[Valid]: Precision: 0.0022-0.0017-0.0013-0.001 Recall: 0.0086-0.0137-0.0264-0.0418 NDCG: 0.0058-0.0073-0.0104-0.0135 MRR: 0.008-0.0086-0.0095-0.0099
+[Test]: Precision: 0.0015-0.0013-0.001-0.0008 Recall: 0.0069-0.0109-0.0213-0.033 NDCG: 0.004-0.0053-0.0077-0.0102 MRR: 0.0045-0.0051-0.0057-0.0061
+[Test]: Precision: 0.0025-0.0021-0.0016-0.0012 Recall: 0.0143-0.0227-0.0449-0.0694 NDCG: 0.008-0.0105-0.0155-0.02 MRR: 0.0083-0.0093-0.0104-0.0108
+[Test]: Precision: 0.0016-0.0014-0.0011-0.0008 Recall: 0.0088-0.014-0.0284-0.0425 NDCG: 0.0047-0.0063-0.0096-0.0123 MRR: 0.0048-0.0054-0.0061-0.0064
+------------------------------------------------------
+Train: The time elapse of epoch 006 is: 00: 05: 09
+------------------------------------------------------
+Runing Epoch 006  costs 00: 06: 19
+[Valid]: Precision: 0.0024-0.002-0.0014-0.0011 Recall: 0.0097-0.0169-0.0308-0.0463 NDCG: 0.0064-0.0085-0.0118-0.015 MRR: 0.0083-0.0092-0.01-0.0105
+[Test]: Precision: 0.0016-0.0016-0.0011-0.0009 Recall: 0.0071-0.0129-0.0248-0.0369 NDCG: 0.0043-0.0061-0.009-0.0114 MRR: 0.005-0.0058-0.0065-0.0068
+[Test]: Precision: 0.0027-0.0022-0.0015-0.0012 Recall: 0.015-0.0241-0.0442-0.069 NDCG: 0.0083-0.011-0.0154-0.02 MRR: 0.0083-0.0095-0.0104-0.0109
+[Test]: Precision: 0.0018-0.0016-0.0011-0.0009 Recall: 0.0098-0.0154-0.0292-0.0461 NDCG: 0.0052-0.007-0.01-0.0132 MRR: 0.0051-0.0059-0.0065-0.0069
+------------------------------------------------------
+Train: The time elapse of epoch 007 is: 00: 05: 15
+------------------------------------------------------
+Runing Epoch 007  costs 00: 06: 24
+[Valid]: Precision: 0.0025-0.002-0.0015-0.0011 Recall: 0.0099-0.0172-0.0314-0.0449 NDCG: 0.0063-0.0084-0.0119-0.0147 MRR: 0.0083-0.0092-0.0101-0.0105
+[Test]: Precision: 0.0016-0.0014-0.0011-0.0009 Recall: 0.007-0.0111-0.0226-0.0362 NDCG: 0.0043-0.0056-0.0084-0.0112 MRR: 0.0052-0.0058-0.0066-0.0069
+[Test]: Precision: 0.0026-0.0021-0.0016-0.0012 Recall: 0.0151-0.0227-0.0451-0.0692 NDCG: 0.0084-0.0106-0.0156-0.02 MRR: 0.0084-0.0094-0.0104-0.0109
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0008 Recall: 0.0088-0.0148-0.0292-0.0415 NDCG: 0.005-0.0068-0.0101-0.0125 MRR: 0.0053-0.0061-0.0068-0.007
+------------------------------------------------------
+Train: The time elapse of epoch 008 is: 00: 05: 17
+------------------------------------------------------
+Runing Epoch 008  costs 00: 06: 26
+[Valid]: Precision: 0.0025-0.0021-0.0015-0.0012 Recall: 0.0099-0.017-0.0321-0.0484 NDCG: 0.0066-0.0087-0.0123-0.0156 MRR: 0.0091-0.01-0.0109-0.0113
+[Test]: Precision: 0.0018-0.0015-0.0012-0.0009 Recall: 0.0074-0.0122-0.0238-0.0394 NDCG: 0.0047-0.0062-0.0091-0.0121 MRR: 0.0057-0.0064-0.0071-0.0075
+[Test]: Precision: 0.0027-0.0021-0.0015-0.0012 Recall: 0.0141-0.0228-0.0428-0.0682 NDCG: 0.0083-0.0108-0.0154-0.02 MRR: 0.0088-0.0097-0.0107-0.0112
+[Test]: Precision: 0.0018-0.0016-0.0011-0.0008 Recall: 0.0091-0.0154-0.0291-0.0429 NDCG: 0.0051-0.0069-0.01-0.0127 MRR: 0.0051-0.0058-0.0065-0.0068
+------------------------------------------------------
+Train: The time elapse of epoch 009 is: 00: 05: 11
+------------------------------------------------------
+Runing Epoch 009  costs 00: 06: 21
+[Valid]: Precision: 0.0024-0.002-0.0014-0.0011 Recall: 0.01-0.0171-0.0301-0.046 NDCG: 0.0065-0.0086-0.0117-0.0151 MRR: 0.0089-0.0098-0.0107-0.0111
+[Test]: Precision: 0.0017-0.0016-0.0011-0.0009 Recall: 0.0076-0.0128-0.0225-0.0365 NDCG: 0.0048-0.0065-0.009-0.0117 MRR: 0.0061-0.007-0.0076-0.008
+[Test]: Precision: 0.0025-0.0022-0.0015-0.0012 Recall: 0.0143-0.0246-0.0434-0.0657 NDCG: 0.0084-0.0113-0.0156-0.0197 MRR: 0.0089-0.0101-0.0109-0.0114
+[Test]: Precision: 0.0017-0.0016-0.0011-0.0008 Recall: 0.0093-0.0164-0.0284-0.0423 NDCG: 0.0054-0.0075-0.0102-0.0129 MRR: 0.0055-0.0064-0.007-0.0073
+------------------------------------------------------
+Train: The time elapse of epoch 010 is: 00: 05: 15
+------------------------------------------------------
+Runing Epoch 010  costs 00: 06: 24
+[Valid]: Precision: 0.0025-0.002-0.0015-0.0011 Recall: 0.0105-0.0181-0.0307-0.0476 NDCG: 0.0067-0.009-0.0121-0.0155 MRR: 0.0089-0.0099-0.0108-0.0112
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0123-0.0234-0.0385 NDCG: 0.0044-0.006-0.0087-0.0118 MRR: 0.0055-0.0062-0.0069-0.0073
+[Test]: Precision: 0.0025-0.002-0.0016-0.0012 Recall: 0.0143-0.0226-0.0449-0.0691 NDCG: 0.0083-0.0107-0.0157-0.0202 MRR: 0.0088-0.0096-0.0107-0.0112
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.009-0.0144-0.0277-0.043 NDCG: 0.0047-0.0064-0.0095-0.0124 MRR: 0.0046-0.0052-0.006-0.0063
+------------------------------------------------------
+Train: The time elapse of epoch 011 is: 00: 05: 16
+------------------------------------------------------
+Runing Epoch 011  costs 00: 06: 25
+[Valid]: Precision: 0.0023-0.0019-0.0014-0.0011 Recall: 0.0093-0.0159-0.0303-0.0463 NDCG: 0.006-0.008-0.0114-0.0147 MRR: 0.008-0.0089-0.0098-0.0102
+[Test]: Precision: 0.0016-0.0014-0.0011-0.0009 Recall: 0.0067-0.0115-0.022-0.036 NDCG: 0.004-0.0055-0.0081-0.0109 MRR: 0.0051-0.0058-0.0065-0.0069
+[Test]: Precision: 0.0023-0.002-0.0015-0.0012 Recall: 0.0131-0.0223-0.0431-0.0688 NDCG: 0.0077-0.0104-0.0151-0.0197 MRR: 0.0081-0.0092-0.0102-0.0107
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0089-0.0149-0.0275-0.043 NDCG: 0.0049-0.0067-0.0097-0.0126 MRR: 0.005-0.0056-0.0063-0.0067
+------------------------------------------------------
+Train: The time elapse of epoch 012 is: 00: 05: 12
+------------------------------------------------------
+Runing Epoch 012  costs 00: 06: 21
+[Valid]: Precision: 0.0024-0.0019-0.0014-0.0011 Recall: 0.0102-0.0164-0.0296-0.0458 NDCG: 0.0067-0.0085-0.0117-0.0151 MRR: 0.0089-0.0097-0.0106-0.011
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0127-0.0237-0.0372 NDCG: 0.0045-0.0061-0.0088-0.0115 MRR: 0.0056-0.0064-0.007-0.0074
+[Test]: Precision: 0.0021-0.002-0.0014-0.0011 Recall: 0.0128-0.0237-0.041-0.0677 NDCG: 0.0079-0.011-0.015-0.0198 MRR: 0.0085-0.0097-0.0106-0.0111
+[Test]: Precision: 0.0018-0.0015-0.0011-0.0009 Recall: 0.0095-0.0158-0.0285-0.043 NDCG: 0.0054-0.0072-0.0102-0.0129 MRR: 0.0056-0.0063-0.007-0.0073
+------------------------------------------------------
+Train: The time elapse of epoch 013 is: 00: 05: 18
+------------------------------------------------------
+Runing Epoch 013  costs 00: 06: 27
+[Valid]: Precision: 0.0024-0.0019-0.0014-0.0011 Recall: 0.0099-0.016-0.0302-0.045 NDCG: 0.0064-0.0082-0.0117-0.0148 MRR: 0.0086-0.0094-0.0103-0.0108
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0075-0.0126-0.0237-0.0367 NDCG: 0.0046-0.0061-0.0088-0.0115 MRR: 0.0057-0.0064-0.0071-0.0074
+[Test]: Precision: 0.0022-0.0021-0.0015-0.0011 Recall: 0.0138-0.0236-0.0422-0.0647 NDCG: 0.008-0.0109-0.015-0.0191 MRR: 0.0084-0.0095-0.0104-0.0108
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0091-0.0153-0.0282-0.0432 NDCG: 0.0051-0.0069-0.0099-0.0128 MRR: 0.0051-0.0058-0.0065-0.0069
+------------------------------------------------------
+Train: The time elapse of epoch 014 is: 00: 05: 12
+------------------------------------------------------
+Runing Epoch 014  costs 00: 06: 21
+[Valid]: Precision: 0.0024-0.0019-0.0014-0.0011 Recall: 0.01-0.0162-0.0291-0.0446 NDCG: 0.0066-0.0085-0.0116-0.0148 MRR: 0.0087-0.0096-0.0104-0.0108
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0071-0.0126-0.0231-0.0371 NDCG: 0.0048-0.0065-0.0091-0.0118 MRR: 0.0064-0.0071-0.0078-0.0082
+[Test]: Precision: 0.0022-0.002-0.0014-0.0011 Recall: 0.0137-0.0234-0.041-0.0641 NDCG: 0.0079-0.0108-0.0148-0.019 MRR: 0.0083-0.0094-0.0103-0.0107
+[Test]: Precision: 0.0018-0.0014-0.0011-0.0008 Recall: 0.0094-0.0142-0.028-0.0418 NDCG: 0.0056-0.007-0.0102-0.0129 MRR: 0.006-0.0065-0.0073-0.0076
+------------------------------------------------------
+Train: The time elapse of epoch 015 is: 00: 05: 13
+------------------------------------------------------
+Runing Epoch 015  costs 00: 06: 23
+[Valid]: Precision: 0.0025-0.002-0.0014-0.0011 Recall: 0.0103-0.0166-0.0282-0.0449 NDCG: 0.0068-0.0086-0.0115-0.0149 MRR: 0.0089-0.0098-0.0106-0.011
+[Test]: Precision: 0.0018-0.0014-0.0011-0.0009 Recall: 0.0075-0.0124-0.0232-0.0369 NDCG: 0.0048-0.0063-0.009-0.0117 MRR: 0.006-0.0066-0.0074-0.0077
+[Test]: Precision: 0.0022-0.002-0.0014-0.0011 Recall: 0.0135-0.0235-0.0408-0.0625 NDCG: 0.0082-0.011-0.015-0.019 MRR: 0.0086-0.0097-0.0106-0.011
+[Test]: Precision: 0.0019-0.0014-0.0011-0.0009 Recall: 0.0097-0.0148-0.0273-0.0433 NDCG: 0.0055-0.0069-0.0099-0.0129 MRR: 0.0058-0.0063-0.007-0.0073
+------------------------------------------------------
+Train: The time elapse of epoch 016 is: 00: 05: 11
+------------------------------------------------------
+Runing Epoch 016  costs 00: 06: 21
+[Valid]: Precision: 0.0023-0.0019-0.0014-0.0011 Recall: 0.0099-0.0158-0.0277-0.0427 NDCG: 0.0063-0.0082-0.0111-0.0142 MRR: 0.008-0.0089-0.0096-0.01
+[Test]: Precision: 0.0018-0.0014-0.0011-0.0008 Recall: 0.0071-0.0121-0.0225-0.0355 NDCG: 0.0047-0.0061-0.0087-0.0113 MRR: 0.0058-0.0064-0.0071-0.0075
+[Test]: Precision: 0.0022-0.002-0.0014-0.0011 Recall: 0.0137-0.0238-0.0402-0.0643 NDCG: 0.0086-0.0115-0.0152-0.0195 MRR: 0.0093-0.0104-0.0112-0.0117
+[Test]: Precision: 0.0018-0.0015-0.0011-0.0009 Recall: 0.009-0.0154-0.0287-0.0432 NDCG: 0.0052-0.007-0.0101-0.0129 MRR: 0.0053-0.006-0.0067-0.007
+------------------------------------------------------
+Train: The time elapse of epoch 017 is: 00: 05: 15
+------------------------------------------------------
+Runing Epoch 017  costs 00: 06: 24
+[Valid]: Precision: 0.0024-0.002-0.0014-0.0011 Recall: 0.01-0.0166-0.0289-0.0451 NDCG: 0.0065-0.0085-0.0115-0.0148 MRR: 0.0084-0.0093-0.0101-0.0105
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0073-0.0126-0.0233-0.0364 NDCG: 0.0048-0.0064-0.009-0.0117 MRR: 0.006-0.0068-0.0074-0.0078
+[Test]: Precision: 0.0023-0.002-0.0014-0.0011 Recall: 0.0144-0.024-0.0394-0.0651 NDCG: 0.0089-0.0116-0.0152-0.0198 MRR: 0.0095-0.0105-0.0113-0.0118
+[Test]: Precision: 0.0019-0.0015-0.0011-0.0009 Recall: 0.0101-0.015-0.0277-0.0429 NDCG: 0.0056-0.0071-0.01-0.0129 MRR: 0.0057-0.0063-0.0069-0.0073
+------------------------------------------------------
+------------------
+Exiting from training early
+======================================================
+End. Best Epoch is 10
+------------------------------------------------------
+Validation
+[Valid]: Precision: 0.0025-0.002-0.0015-0.0011 Recall: 0.0105-0.0181-0.0307-0.0476 NDCG: 0.0067-0.009-0.0121-0.0155 MRR: 0.0089-0.0099-0.0108-0.0112
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0123-0.0234-0.0385 NDCG: 0.0044-0.006-0.0087-0.0118 MRR: 0.0055-0.0062-0.0069-0.0073
+Test
+All
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0123-0.0234-0.0385 NDCG: 0.0044-0.006-0.0087-0.0118 MRR: 0.0055-0.0062-0.0069-0.0073
+Warm
+[Test]: Precision: 0.0025-0.002-0.0016-0.0012 Recall: 0.0143-0.0226-0.0449-0.0691 NDCG: 0.0083-0.0107-0.0157-0.0202 MRR: 0.0088-0.0096-0.0107-0.0112
+Cold
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.009-0.0144-0.0277-0.043 NDCG: 0.0047-0.0064-0.0095-0.0124 MRR: 0.0046-0.0052-0.006-0.0063
+------------------------------------------------------
+Namespace(seed=1, no_cuda=False, data_path='amazon', model_name='TDRO', log_name='log', batch_size=1000, num_epoch=200, num_workers=1, topK='[10, 20, 50, 100]', step=2000, l_r=0.001, dim_E=128, reg_weight=0.001, num_neg=256, contrastive=0.1, num_sample=0.5, temp_value=0.1, pretrained_emb='./pretrained_emb/', num_group=5, mu=0.2, eta=0.2, num_period=5, split_mode='global', lam=0.3, p=0.2, group_test=False, portion_list=None, gpu='0', save_path='./models/', inference=False, ckpt=None)
+Data loading ...
+running k-means on cuda:0..
+[running kmeans]: 0it [00:00, ?it/s][running kmeans]: 0it [00:00, ?it/s, center_shift=51.014324, iteration=1, tol=0.000100][running kmeans]: 1it [00:00,  7.79it/s, center_shift=51.014324, iteration=1, tol=0.000100][running kmeans]: 1it [00:00,  7.79it/s, center_shift=0.901712, iteration=2, tol=0.000100] [running kmeans]: 2it [00:00,  7.94it/s, center_shift=0.901712, iteration=2, tol=0.000100][running kmeans]: 2it [00:00,  7.94it/s, center_shift=0.348838, iteration=3, tol=0.000100][running kmeans]: 3it [00:00,  7.99it/s, center_shift=0.348838, iteration=3, tol=0.000100][running kmeans]: 3it [00:00,  7.99it/s, center_shift=0.171986, iteration=4, tol=0.000100][running kmeans]: 4it [00:00,  8.00it/s, center_shift=0.171986, iteration=4, tol=0.000100][running kmeans]: 4it [00:00,  8.00it/s, center_shift=0.113762, iteration=5, tol=0.000100][running kmeans]: 5it [00:00,  8.02it/s, center_shift=0.113762, iteration=5, tol=0.000100][running kmeans]: 5it [00:00,  8.02it/s, center_shift=0.088069, iteration=6, tol=0.000100][running kmeans]: 6it [00:00,  8.03it/s, center_shift=0.088069, iteration=6, tol=0.000100][running kmeans]: 6it [00:00,  8.03it/s, center_shift=0.064380, iteration=7, tol=0.000100][running kmeans]: 7it [00:00,  8.03it/s, center_shift=0.064380, iteration=7, tol=0.000100][running kmeans]: 7it [00:00,  8.03it/s, center_shift=0.055621, iteration=8, tol=0.000100][running kmeans]: 8it [00:00,  8.02it/s, center_shift=0.055621, iteration=8, tol=0.000100][running kmeans]: 8it [00:01,  8.02it/s, center_shift=0.052136, iteration=9, tol=0.000100][running kmeans]: 9it [00:01,  8.01it/s, center_shift=0.052136, iteration=9, tol=0.000100][running kmeans]: 9it [00:01,  8.01it/s, center_shift=0.032142, iteration=10, tol=0.000100][running kmeans]: 10it [00:01,  8.02it/s, center_shift=0.032142, iteration=10, tol=0.000100][running kmeans]: 10it [00:01,  8.02it/s, center_shift=0.013448, iteration=11, tol=0.000100][running kmeans]: 11it [00:01,  7.97it/s, center_shift=0.013448, iteration=11, tol=0.000100][running kmeans]: 11it [00:01,  7.97it/s, center_shift=0.006735, iteration=12, tol=0.000100][running kmeans]: 12it [00:01,  7.98it/s, center_shift=0.006735, iteration=12, tol=0.000100][running kmeans]: 12it [00:01,  7.98it/s, center_shift=0.004198, iteration=13, tol=0.000100][running kmeans]: 13it [00:01,  7.98it/s, center_shift=0.004198, iteration=13, tol=0.000100][running kmeans]: 13it [00:01,  7.98it/s, center_shift=0.002742, iteration=14, tol=0.000100][running kmeans]: 14it [00:01,  7.98it/s, center_shift=0.002742, iteration=14, tol=0.000100][running kmeans]: 14it [00:01,  7.98it/s, center_shift=0.002289, iteration=15, tol=0.000100][running kmeans]: 15it [00:01,  7.93it/s, center_shift=0.002289, iteration=15, tol=0.000100][running kmeans]: 15it [00:02,  7.93it/s, center_shift=0.001515, iteration=16, tol=0.000100][running kmeans]: 16it [00:02,  7.96it/s, center_shift=0.001515, iteration=16, tol=0.000100][running kmeans]: 16it [00:02,  7.96it/s, center_shift=0.001004, iteration=17, tol=0.000100][running kmeans]: 17it [00:02,  7.99it/s, center_shift=0.001004, iteration=17, tol=0.000100][running kmeans]: 17it [00:02,  7.99it/s, center_shift=0.000953, iteration=18, tol=0.000100][running kmeans]: 18it [00:02,  8.00it/s, center_shift=0.000953, iteration=18, tol=0.000100][running kmeans]: 18it [00:02,  8.00it/s, center_shift=0.000724, iteration=19, tol=0.000100][running kmeans]: 19it [00:02,  8.00it/s, center_shift=0.000724, iteration=19, tol=0.000100][running kmeans]: 19it [00:02,  8.00it/s, center_shift=0.000544, iteration=20, tol=0.000100][running kmeans]: 20it [00:02,  8.01it/s, center_shift=0.000544, iteration=20, tol=0.000100][running kmeans]: 20it [00:02,  8.01it/s, center_shift=0.000447, iteration=21, tol=0.000100][running kmeans]: 21it [00:02,  8.00it/s, center_shift=0.000447, iteration=21, tol=0.000100][running kmeans]: 21it [00:02,  8.00it/s, center_shift=0.000376, iteration=22, tol=0.000100][running kmeans]: 22it [00:02,  8.01it/s, center_shift=0.000376, iteration=22, tol=0.000100][running kmeans]: 22it [00:02,  8.01it/s, center_shift=0.000289, iteration=23, tol=0.000100][running kmeans]: 23it [00:02,  8.01it/s, center_shift=0.000289, iteration=23, tol=0.000100][running kmeans]: 23it [00:03,  8.01it/s, center_shift=0.000368, iteration=24, tol=0.000100][running kmeans]: 24it [00:03,  8.02it/s, center_shift=0.000368, iteration=24, tol=0.000100][running kmeans]: 24it [00:03,  8.02it/s, center_shift=0.000278, iteration=25, tol=0.000100][running kmeans]: 25it [00:03,  7.96it/s, center_shift=0.000278, iteration=25, tol=0.000100][running kmeans]: 25it [00:03,  7.96it/s, center_shift=0.000212, iteration=26, tol=0.000100][running kmeans]: 26it [00:03,  7.98it/s, center_shift=0.000212, iteration=26, tol=0.000100][running kmeans]: 26it [00:03,  7.98it/s, center_shift=0.000153, iteration=27, tol=0.000100][running kmeans]: 27it [00:03,  7.93it/s, center_shift=0.000153, iteration=27, tol=0.000100][running kmeans]: 27it [00:03,  7.93it/s, center_shift=0.000161, iteration=28, tol=0.000100][running kmeans]: 28it [00:03,  7.96it/s, center_shift=0.000161, iteration=28, tol=0.000100][running kmeans]: 28it [00:03,  7.96it/s, center_shift=0.000126, iteration=29, tol=0.000100][running kmeans]: 29it [00:03,  7.98it/s, center_shift=0.000126, iteration=29, tol=0.000100][running kmeans]: 29it [00:03,  7.98it/s, center_shift=0.000097, iteration=30, tol=0.000100][running kmeans]: 30it [00:03,  7.96it/s, center_shift=0.000097, iteration=30, tol=0.000100][running kmeans]: 30it [00:03,  7.98it/s, center_shift=0.000097, iteration=30, tol=0.000100]
+interaction num of Environment 0: 39688
+interaction num of Environment 1: 29818
+interaction num of Environment 2: 23611
+interaction num of Environment 3: 20653
+interaction num of Environment 4: 17109
+interaction num of Group 0: 12634
+interaction num of Group 1: 18481
+interaction num of Group 2: 40521
+interaction num of Group 3: 43392
+interaction num of Group 4: 15851
+Data has been loaded.
+Train: The time elapse of epoch 000 is: 00: 05: 13
+------------------------------------------------------
+Runing Epoch 000  costs 00: 06: 22
+[Valid]: Precision: 0.0005-0.0005-0.0004-0.0004 Recall: 0.0019-0.0037-0.0091-0.0158 NDCG: 0.0013-0.0019-0.0032-0.0046 MRR: 0.0017-0.002-0.0023-0.0025
+[Test]: Precision: 0.0006-0.0005-0.0005-0.0004 Recall: 0.0025-0.0036-0.009-0.0151 NDCG: 0.0018-0.0021-0.0034-0.0047 MRR: 0.0027-0.0029-0.0032-0.0034
+[Test]: Precision: 0.0005-0.0005-0.0004-0.0003 Recall: 0.0033-0.0071-0.0121-0.0178 NDCG: 0.0016-0.0026-0.0037-0.0048 MRR: 0.0016-0.0019-0.0022-0.0023
+[Test]: Precision: 0.0009-0.0007-0.0006-0.0005 Recall: 0.0045-0.0065-0.0159-0.0267 NDCG: 0.0029-0.0035-0.0057-0.0077 MRR: 0.0035-0.0038-0.0043-0.0045
+------------------------------------------------------
+Train: The time elapse of epoch 001 is: 00: 05: 15
+------------------------------------------------------
+Runing Epoch 001  costs 00: 06: 23
+[Valid]: Precision: 0.0009-0.0007-0.0006-0.0005 Recall: 0.0033-0.0057-0.012-0.021 NDCG: 0.0023-0.003-0.0046-0.0065 MRR: 0.0031-0.0034-0.0039-0.0041
+[Test]: Precision: 0.0009-0.0008-0.0006-0.0005 Recall: 0.0034-0.0057-0.0128-0.0214 NDCG: 0.002-0.0028-0.0045-0.0062 MRR: 0.0025-0.0029-0.0033-0.0035
+[Test]: Precision: 0.0014-0.0011-0.0009-0.0007 Recall: 0.0086-0.0126-0.0248-0.0373 NDCG: 0.0048-0.006-0.0087-0.011 MRR: 0.0047-0.0052-0.0058-0.0061
+[Test]: Precision: 0.0012-0.001-0.0008-0.0007 Recall: 0.0058-0.0099-0.0224-0.0366 NDCG: 0.0032-0.0044-0.0072-0.0099 MRR: 0.0034-0.0039-0.0044-0.0047
+------------------------------------------------------
+Train: The time elapse of epoch 002 is: 00: 05: 20
+------------------------------------------------------
+Runing Epoch 002  costs 00: 06: 28
+[Valid]: Precision: 0.001-0.0009-0.0008-0.0006 Recall: 0.0039-0.0075-0.0161-0.0258 NDCG: 0.0026-0.0037-0.0057-0.0077 MRR: 0.0037-0.0042-0.0047-0.005
+[Test]: Precision: 0.0011-0.0009-0.0007-0.0006 Recall: 0.0046-0.0075-0.015-0.0235 NDCG: 0.0028-0.0037-0.0056-0.0072 MRR: 0.0035-0.004-0.0044-0.0047
+[Test]: Precision: 0.0018-0.0016-0.0012-0.0009 Recall: 0.0103-0.0185-0.0339-0.0523 NDCG: 0.0056-0.0079-0.0114-0.0147 MRR: 0.0055-0.0064-0.0072-0.0075
+[Test]: Precision: 0.0014-0.0012-0.001-0.0007 Recall: 0.0076-0.0127-0.0247-0.0383 NDCG: 0.0044-0.0059-0.0087-0.0112 MRR: 0.0046-0.0052-0.0058-0.0061
+------------------------------------------------------
+Train: The time elapse of epoch 003 is: 00: 05: 15
+------------------------------------------------------
+Runing Epoch 003  costs 00: 06: 23
+[Valid]: Precision: 0.0016-0.0013-0.001-0.0008 Recall: 0.0064-0.0105-0.0198-0.0308 NDCG: 0.0041-0.0053-0.0076-0.0098 MRR: 0.0055-0.0062-0.0068-0.0071
+[Test]: Precision: 0.0013-0.001-0.0008-0.0007 Recall: 0.0047-0.0087-0.0166-0.0284 NDCG: 0.0032-0.0043-0.0063-0.0087 MRR: 0.0041-0.0046-0.0052-0.0055
+[Test]: Precision: 0.0021-0.0018-0.0013-0.0011 Recall: 0.0123-0.0195-0.0375-0.0619 NDCG: 0.0065-0.0086-0.0126-0.0171 MRR: 0.0064-0.0072-0.0081-0.0086
+[Test]: Precision: 0.0017-0.0013-0.001-0.0008 Recall: 0.0085-0.014-0.0268-0.0427 NDCG: 0.005-0.0066-0.0095-0.0126 MRR: 0.0054-0.006-0.0067-0.007
+------------------------------------------------------
+Train: The time elapse of epoch 004 is: 00: 05: 16
+------------------------------------------------------
+Runing Epoch 004  costs 00: 06: 24
+[Valid]: Precision: 0.0021-0.0016-0.0011-0.001 Recall: 0.0087-0.0142-0.0238-0.0397 NDCG: 0.006-0.0076-0.0099-0.0131 MRR: 0.0076-0.0084-0.009-0.0094
+[Test]: Precision: 0.0016-0.0013-0.0009-0.0008 Recall: 0.0071-0.0114-0.0203-0.0323 NDCG: 0.0042-0.0055-0.0077-0.0101 MRR: 0.005-0.0056-0.0061-0.0064
+[Test]: Precision: 0.0023-0.0021-0.0014-0.0011 Recall: 0.0134-0.0235-0.0412-0.064 NDCG: 0.0075-0.0103-0.0144-0.0185 MRR: 0.0074-0.0085-0.0094-0.0099
+[Test]: Precision: 0.0018-0.0014-0.001-0.0008 Recall: 0.0093-0.0157-0.027-0.0425 NDCG: 0.0052-0.007-0.0096-0.0126 MRR: 0.0054-0.0061-0.0067-0.0071
+------------------------------------------------------
+Train: The time elapse of epoch 005 is: 00: 05: 17
+------------------------------------------------------
+Runing Epoch 005  costs 00: 06: 25
+[Valid]: Precision: 0.0022-0.0017-0.0013-0.001 Recall: 0.0086-0.0137-0.0264-0.0418 NDCG: 0.0058-0.0073-0.0104-0.0135 MRR: 0.008-0.0086-0.0095-0.0099
+[Test]: Precision: 0.0015-0.0013-0.001-0.0008 Recall: 0.0069-0.0109-0.0213-0.033 NDCG: 0.004-0.0053-0.0077-0.0102 MRR: 0.0045-0.0051-0.0057-0.0061
+[Test]: Precision: 0.0025-0.0021-0.0016-0.0012 Recall: 0.0143-0.0227-0.0449-0.0694 NDCG: 0.008-0.0105-0.0155-0.02 MRR: 0.0083-0.0093-0.0104-0.0108
+[Test]: Precision: 0.0016-0.0014-0.0011-0.0008 Recall: 0.0088-0.014-0.0284-0.0425 NDCG: 0.0047-0.0063-0.0096-0.0123 MRR: 0.0048-0.0054-0.0061-0.0064
+------------------------------------------------------
+Train: The time elapse of epoch 006 is: 00: 05: 13
+------------------------------------------------------
+Runing Epoch 006  costs 00: 06: 21
+[Valid]: Precision: 0.0024-0.002-0.0014-0.0011 Recall: 0.0097-0.0169-0.0308-0.0463 NDCG: 0.0064-0.0085-0.0118-0.015 MRR: 0.0083-0.0092-0.01-0.0105
+[Test]: Precision: 0.0016-0.0016-0.0011-0.0009 Recall: 0.0071-0.0129-0.0248-0.0369 NDCG: 0.0043-0.0061-0.009-0.0114 MRR: 0.005-0.0058-0.0065-0.0068
+[Test]: Precision: 0.0027-0.0022-0.0015-0.0012 Recall: 0.015-0.0241-0.0442-0.069 NDCG: 0.0083-0.011-0.0154-0.02 MRR: 0.0083-0.0095-0.0104-0.0109
+[Test]: Precision: 0.0018-0.0016-0.0011-0.0009 Recall: 0.0098-0.0154-0.0292-0.0461 NDCG: 0.0052-0.007-0.01-0.0132 MRR: 0.0051-0.0059-0.0065-0.0069
+------------------------------------------------------
+Train: The time elapse of epoch 007 is: 00: 05: 21
+------------------------------------------------------
+Runing Epoch 007  costs 00: 06: 29
+[Valid]: Precision: 0.0025-0.002-0.0015-0.0011 Recall: 0.0099-0.0172-0.0314-0.0449 NDCG: 0.0063-0.0084-0.0119-0.0147 MRR: 0.0083-0.0092-0.0101-0.0105
+[Test]: Precision: 0.0016-0.0014-0.0011-0.0009 Recall: 0.007-0.0111-0.0226-0.0362 NDCG: 0.0043-0.0056-0.0084-0.0112 MRR: 0.0052-0.0058-0.0066-0.0069
+[Test]: Precision: 0.0026-0.0021-0.0016-0.0012 Recall: 0.0151-0.0227-0.0451-0.0692 NDCG: 0.0084-0.0106-0.0156-0.02 MRR: 0.0084-0.0094-0.0104-0.0109
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0008 Recall: 0.0088-0.0148-0.0292-0.0415 NDCG: 0.005-0.0068-0.0101-0.0125 MRR: 0.0053-0.0061-0.0068-0.007
+------------------------------------------------------
+Train: The time elapse of epoch 008 is: 00: 05: 17
+------------------------------------------------------
+Runing Epoch 008  costs 00: 06: 26
+[Valid]: Precision: 0.0025-0.0021-0.0015-0.0012 Recall: 0.0099-0.017-0.0321-0.0484 NDCG: 0.0066-0.0087-0.0123-0.0156 MRR: 0.0091-0.01-0.0109-0.0113
+[Test]: Precision: 0.0018-0.0015-0.0012-0.0009 Recall: 0.0074-0.0122-0.0238-0.0394 NDCG: 0.0047-0.0062-0.0091-0.0121 MRR: 0.0057-0.0064-0.0071-0.0075
+[Test]: Precision: 0.0027-0.0021-0.0015-0.0012 Recall: 0.0141-0.0228-0.0428-0.0682 NDCG: 0.0083-0.0108-0.0154-0.02 MRR: 0.0088-0.0097-0.0107-0.0112
+[Test]: Precision: 0.0018-0.0016-0.0011-0.0008 Recall: 0.0091-0.0154-0.0291-0.0429 NDCG: 0.0051-0.0069-0.01-0.0127 MRR: 0.0051-0.0058-0.0065-0.0068
+------------------------------------------------------
+Train: The time elapse of epoch 009 is: 00: 05: 13
+------------------------------------------------------
+Runing Epoch 009  costs 00: 06: 21
+[Valid]: Precision: 0.0024-0.002-0.0014-0.0011 Recall: 0.01-0.0171-0.0301-0.046 NDCG: 0.0065-0.0086-0.0117-0.0151 MRR: 0.0089-0.0098-0.0107-0.0111
+[Test]: Precision: 0.0017-0.0016-0.0011-0.0009 Recall: 0.0076-0.0128-0.0225-0.0365 NDCG: 0.0048-0.0065-0.009-0.0117 MRR: 0.0061-0.007-0.0076-0.008
+[Test]: Precision: 0.0025-0.0022-0.0015-0.0012 Recall: 0.0143-0.0246-0.0434-0.0657 NDCG: 0.0084-0.0113-0.0156-0.0197 MRR: 0.0089-0.0101-0.0109-0.0114
+[Test]: Precision: 0.0017-0.0016-0.0011-0.0008 Recall: 0.0093-0.0164-0.0284-0.0423 NDCG: 0.0054-0.0075-0.0102-0.0129 MRR: 0.0055-0.0064-0.007-0.0073
+------------------------------------------------------
+Train: The time elapse of epoch 010 is: 00: 05: 17
+------------------------------------------------------
+Runing Epoch 010  costs 00: 06: 25
+[Valid]: Precision: 0.0025-0.002-0.0015-0.0011 Recall: 0.0105-0.0181-0.0307-0.0476 NDCG: 0.0067-0.009-0.0121-0.0155 MRR: 0.0089-0.0099-0.0108-0.0112
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0123-0.0234-0.0385 NDCG: 0.0044-0.006-0.0087-0.0118 MRR: 0.0055-0.0062-0.0069-0.0073
+[Test]: Precision: 0.0025-0.002-0.0016-0.0012 Recall: 0.0143-0.0226-0.0449-0.0691 NDCG: 0.0083-0.0107-0.0157-0.0202 MRR: 0.0088-0.0096-0.0107-0.0112
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.009-0.0144-0.0277-0.043 NDCG: 0.0047-0.0064-0.0095-0.0124 MRR: 0.0046-0.0052-0.006-0.0063
+------------------------------------------------------
+Train: The time elapse of epoch 011 is: 00: 05: 20
+------------------------------------------------------
+Runing Epoch 011  costs 00: 06: 28
+[Valid]: Precision: 0.0023-0.0019-0.0014-0.0011 Recall: 0.0093-0.0159-0.0303-0.0463 NDCG: 0.006-0.008-0.0114-0.0147 MRR: 0.008-0.0089-0.0098-0.0102
+[Test]: Precision: 0.0016-0.0014-0.0011-0.0009 Recall: 0.0067-0.0115-0.022-0.036 NDCG: 0.004-0.0055-0.0081-0.0109 MRR: 0.0051-0.0058-0.0065-0.0069
+[Test]: Precision: 0.0023-0.002-0.0015-0.0012 Recall: 0.0131-0.0223-0.0431-0.0688 NDCG: 0.0077-0.0104-0.0151-0.0197 MRR: 0.0081-0.0092-0.0102-0.0107
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0089-0.0149-0.0275-0.043 NDCG: 0.0049-0.0067-0.0097-0.0126 MRR: 0.005-0.0056-0.0063-0.0067
+------------------------------------------------------
+Train: The time elapse of epoch 012 is: 00: 05: 14
+------------------------------------------------------
+Runing Epoch 012  costs 00: 06: 22
+[Valid]: Precision: 0.0024-0.0019-0.0014-0.0011 Recall: 0.0102-0.0164-0.0296-0.0458 NDCG: 0.0067-0.0085-0.0117-0.0151 MRR: 0.0089-0.0097-0.0106-0.011
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0127-0.0237-0.0372 NDCG: 0.0045-0.0061-0.0088-0.0115 MRR: 0.0056-0.0064-0.007-0.0074
+[Test]: Precision: 0.0021-0.002-0.0014-0.0011 Recall: 0.0128-0.0237-0.041-0.0677 NDCG: 0.0079-0.011-0.015-0.0198 MRR: 0.0085-0.0097-0.0106-0.0111
+[Test]: Precision: 0.0018-0.0015-0.0011-0.0009 Recall: 0.0095-0.0158-0.0285-0.043 NDCG: 0.0054-0.0072-0.0102-0.0129 MRR: 0.0056-0.0063-0.007-0.0073
+------------------------------------------------------
+Train: The time elapse of epoch 013 is: 00: 05: 12
+------------------------------------------------------
+Runing Epoch 013  costs 00: 06: 20
+[Valid]: Precision: 0.0024-0.0019-0.0014-0.0011 Recall: 0.0099-0.016-0.0302-0.045 NDCG: 0.0064-0.0082-0.0117-0.0148 MRR: 0.0086-0.0094-0.0103-0.0108
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0075-0.0126-0.0237-0.0367 NDCG: 0.0046-0.0061-0.0088-0.0115 MRR: 0.0057-0.0064-0.0071-0.0074
+[Test]: Precision: 0.0022-0.0021-0.0015-0.0011 Recall: 0.0138-0.0236-0.0422-0.0647 NDCG: 0.008-0.0109-0.015-0.0191 MRR: 0.0084-0.0095-0.0104-0.0108
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0091-0.0153-0.0282-0.0432 NDCG: 0.0051-0.0069-0.0099-0.0128 MRR: 0.0051-0.0058-0.0065-0.0069
+------------------------------------------------------
+Train: The time elapse of epoch 014 is: 00: 05: 15
+------------------------------------------------------
+Runing Epoch 014  costs 00: 06: 23
+[Valid]: Precision: 0.0024-0.0019-0.0014-0.0011 Recall: 0.01-0.0162-0.0291-0.0446 NDCG: 0.0066-0.0085-0.0116-0.0148 MRR: 0.0087-0.0096-0.0104-0.0108
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0071-0.0126-0.0231-0.0371 NDCG: 0.0048-0.0065-0.0091-0.0118 MRR: 0.0064-0.0071-0.0078-0.0082
+[Test]: Precision: 0.0022-0.002-0.0014-0.0011 Recall: 0.0137-0.0234-0.041-0.0641 NDCG: 0.0079-0.0108-0.0148-0.019 MRR: 0.0083-0.0094-0.0103-0.0107
+[Test]: Precision: 0.0018-0.0014-0.0011-0.0008 Recall: 0.0094-0.0142-0.028-0.0418 NDCG: 0.0056-0.007-0.0102-0.0129 MRR: 0.006-0.0065-0.0073-0.0076
+------------------------------------------------------
+Train: The time elapse of epoch 015 is: 00: 05: 14
+------------------------------------------------------
+Runing Epoch 015  costs 00: 06: 22
+[Valid]: Precision: 0.0025-0.002-0.0014-0.0011 Recall: 0.0103-0.0166-0.0282-0.0449 NDCG: 0.0068-0.0086-0.0115-0.0149 MRR: 0.0089-0.0098-0.0106-0.011
+[Test]: Precision: 0.0018-0.0014-0.0011-0.0009 Recall: 0.0075-0.0124-0.0232-0.0369 NDCG: 0.0048-0.0063-0.009-0.0117 MRR: 0.006-0.0066-0.0074-0.0077
+[Test]: Precision: 0.0022-0.002-0.0014-0.0011 Recall: 0.0135-0.0235-0.0408-0.0625 NDCG: 0.0082-0.011-0.015-0.019 MRR: 0.0086-0.0097-0.0106-0.011
+[Test]: Precision: 0.0019-0.0014-0.0011-0.0009 Recall: 0.0097-0.0148-0.0273-0.0433 NDCG: 0.0055-0.0069-0.0099-0.0129 MRR: 0.0058-0.0063-0.007-0.0073
+------------------------------------------------------
+Train: The time elapse of epoch 016 is: 00: 05: 16
+------------------------------------------------------
+Runing Epoch 016  costs 00: 06: 24
+[Valid]: Precision: 0.0023-0.0019-0.0014-0.0011 Recall: 0.0099-0.0158-0.0277-0.0427 NDCG: 0.0063-0.0082-0.0111-0.0142 MRR: 0.008-0.0089-0.0096-0.01
+[Test]: Precision: 0.0018-0.0014-0.0011-0.0008 Recall: 0.0071-0.0121-0.0225-0.0355 NDCG: 0.0047-0.0061-0.0087-0.0113 MRR: 0.0058-0.0064-0.0071-0.0075
+[Test]: Precision: 0.0022-0.002-0.0014-0.0011 Recall: 0.0137-0.0238-0.0402-0.0643 NDCG: 0.0086-0.0115-0.0152-0.0195 MRR: 0.0093-0.0104-0.0112-0.0117
+[Test]: Precision: 0.0018-0.0015-0.0011-0.0009 Recall: 0.009-0.0154-0.0287-0.0432 NDCG: 0.0052-0.007-0.0101-0.0129 MRR: 0.0053-0.006-0.0067-0.007
+------------------------------------------------------
+Train: The time elapse of epoch 017 is: 00: 05: 17
+------------------------------------------------------
+Runing Epoch 017  costs 00: 06: 26
+[Valid]: Precision: 0.0024-0.002-0.0014-0.0011 Recall: 0.01-0.0166-0.0289-0.0451 NDCG: 0.0065-0.0085-0.0115-0.0148 MRR: 0.0084-0.0093-0.0101-0.0105
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.0073-0.0126-0.0233-0.0364 NDCG: 0.0048-0.0064-0.009-0.0117 MRR: 0.006-0.0068-0.0074-0.0078
+[Test]: Precision: 0.0023-0.002-0.0014-0.0011 Recall: 0.0144-0.024-0.0394-0.0651 NDCG: 0.0089-0.0116-0.0152-0.0198 MRR: 0.0095-0.0105-0.0113-0.0118
+[Test]: Precision: 0.0019-0.0015-0.0011-0.0009 Recall: 0.0101-0.015-0.0277-0.0429 NDCG: 0.0056-0.0071-0.01-0.0129 MRR: 0.0057-0.0063-0.0069-0.0073
+------------------------------------------------------
+------------------
+Exiting from training early
+======================================================
+End. Best Epoch is 10
+------------------------------------------------------
+Validation
+[Valid]: Precision: 0.0025-0.002-0.0015-0.0011 Recall: 0.0105-0.0181-0.0307-0.0476 NDCG: 0.0067-0.009-0.0121-0.0155 MRR: 0.0089-0.0099-0.0108-0.0112
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0123-0.0234-0.0385 NDCG: 0.0044-0.006-0.0087-0.0118 MRR: 0.0055-0.0062-0.0069-0.0073
+Test
+All
+[Test]: Precision: 0.0017-0.0015-0.0011-0.0009 Recall: 0.0071-0.0123-0.0234-0.0385 NDCG: 0.0044-0.006-0.0087-0.0118 MRR: 0.0055-0.0062-0.0069-0.0073
+Warm
+[Test]: Precision: 0.0025-0.002-0.0016-0.0012 Recall: 0.0143-0.0226-0.0449-0.0691 NDCG: 0.0083-0.0107-0.0157-0.0202 MRR: 0.0088-0.0096-0.0107-0.0112
+Cold
+[Test]: Precision: 0.0017-0.0014-0.0011-0.0009 Recall: 0.009-0.0144-0.0277-0.043 NDCG: 0.0047-0.0064-0.0095-0.0124 MRR: 0.0046-0.0052-0.006-0.0063
+------------------------------------------------------
